@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
@@ -11,8 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        dd('post index');
+        $posts = Post::all();
+
+        return view('post/posts', ['posts' => $posts]);
     }
 
     /**
@@ -20,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post/post_create');
     }
 
     /**
@@ -28,7 +31,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'author' => 'required',
+        ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->author = $request->author;
+        $post->save();
+
+        return redirect('post');
     }
 
     /**
@@ -36,8 +51,9 @@ class PostController extends Controller
      */
     public function show(Request $request, string $id)
     {
-        //
-        dd($id, $request);
+        $post = Post::find($id);
+
+        return view('post/post', ['post' => $post]);
     }
 
     /**
@@ -45,7 +61,9 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+        
+        return view('post/post_edit', ['post' => $post]);
     }
 
     /**
@@ -53,7 +71,19 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'author' => 'required',
+        ]);
+
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->author = $request->author;
+        $post->save();
+
+        return view('post/post', ['post' => $post]);
     }
 
     /**
@@ -61,6 +91,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('post');
     }
 }

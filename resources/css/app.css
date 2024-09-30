@@ -3,3 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.post {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    margin: 2em;
+    padding: 1em;
+}
