@@ -8,4 +8,5 @@
 ])>
     <a href="/">главная</a>
     <a href="/home">домой</a>
+    <a href="/post">посты</a>
 </div>
