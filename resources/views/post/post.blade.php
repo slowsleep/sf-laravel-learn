@@ -13,7 +13,7 @@
     </div>
     <p>Title: {{ $post->title }}</p>
     <p>Content: {{ $post->content }}</p>
-    <p>Author: {{ $post->author }}</p>
+    <p>Author: {{ App\Models\User::find($post->author)->name }}</p>
     <p>created: {{ $post->created_at }}</p>
 </div>
 @endsection
