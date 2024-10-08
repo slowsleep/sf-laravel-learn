@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('post/posts', ['posts' => $posts]);
+        return view('post/index', compact('posts'));
     }
 
     /**
@@ -23,7 +24,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post/post_create');
+        $users = User::all();
+
+        return view('post/create', compact('users'));
     }
 
     /**
@@ -33,13 +36,13 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required',
+            'content_text' => 'required',
             'author' => 'required',
         ]);
 
         $post = new Post();
         $post->title = $request->title;
-        $post->content = $request->content;
+        $post->content = $request->content_text;
         $post->author = $request->author;
         $post->save();
 
@@ -51,9 +54,9 @@ class PostController extends Controller
      */
     public function show(Request $request, string $id)
     {
-        $post = Post::find($id);
+        $post = Post::with('user')->find($id);
 
-        return view('post/post', ['post' => $post]);
+        return view('post/show', compact('post'));
     }
 
     /**
@@ -62,8 +65,9 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
-        
-        return view('post/post_edit', ['post' => $post]);
+        $users = User::all();
+
+        return view('post/edit', compact('post', 'users'));
     }
 
     /**
@@ -73,17 +77,17 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required',
+            'content_text' => 'required',
             'author' => 'required',
         ]);
 
         $post = Post::find($id);
         $post->title = $request->title;
-        $post->content = $request->content;
+        $post->content = $request->content_text;
         $post->author = $request->author;
         $post->save();
 
-        return view('post/post', ['post' => $post]);
+        return view('post/show', compact('post'));
     }
 
     /**

@@ -9,11 +9,16 @@
     </div>
     <div>
         <label for="content">Content:</label>
-        <input type="text" name="content" id="content">
+        <input type="text" name="content_text" id="content">
     </div>
     <div>
         <label for="author">Author:</label>
-        <input type="text" name="author" id="author">
+        <!-- <input type="text" name="author" id="author"> -->
+        <select name="author" id="">
+            @foreach ($users as $user)
+                <option value="{{ $user->id }}">{{ $user->name }}</option>
+            @endforeach
+        </select>
     </div>
     <input type="submit">
 </form>

@@ -11,7 +11,7 @@
             </a>
         </p>
         <p>Content: {{ $post->content }}</p>
-        <p>Author: {{ $post->author }}</p>
+        <p>Author: {{ $post->user->name }}</p>
         <p>created: {{ $post->created_at }}</p>
     </div>
     @endforeach
