@@ -12,3 +12,17 @@
     margin: 2em;
     padding: 1em;
 }
+
+.task {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid blue;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    margin: 1em;
+    padding: 2em;
+}
+
+.task__executor {
+    margin-left: 2em;
+}
