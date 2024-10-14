@@ -10,4 +10,5 @@
     <a href="/home">домой</a>
     <a href="/post">посты</a>
     <a href="/task">task</a>
+    <a href="/math">mathematics</a>
 </div>
