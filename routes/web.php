@@ -22,7 +22,7 @@ Route::resource('post', PostController::class);
 
 Route::get('mark', [MarkController::class, 'index'])->name('mark');
 
-Route::resource('task', TaskController::class)->only(['index', 'store', 'edit', 'update', 'destroy']);
+Route::resource('task', TaskController::class)->only(['index', 'store', 'edit', 'update', 'destroy'])->middleware('dblog');
 
 Route::get('math', [MathController::class, 'index']);
 
