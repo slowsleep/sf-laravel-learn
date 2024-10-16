@@ -1,28 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.post {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    margin: 2em;
-    padding: 1em;
-}
-
-.task {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid blue;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-    margin: 1em;
-    padding: 2em;
-}
-
-.task__executor {
-    margin-left: 2em;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
