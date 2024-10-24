@@ -5,6 +5,8 @@
     'color: white' => $color == 'secondary',
     'font-size: 26px' => $color == 'primary',
     'font-size: 16px' => $color == 'secondary',
+    'display: flex' => true,
+    'justify-content: space-around' => true
 ])>
     <a href="/">главная</a>
     <a href="/home">домой</a>
